@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="robot" class="com.nadya.impls.RobotImpl" scope="singleton" init-method="init">
+        <constructor-arg name="model" value="T-1000"/>
+        <constructor-arg name="name" value="Terminator"/>
+        <constructor-arg name="body" ref="sonyBody"/>
+        <constructor-arg index="3" ref="sonyHead"/>
+        <constructor-arg index="4" ref="sonyRightHand"/>
+        <constructor-arg name="rightLeg" ref="sonyRightLeg"/>
+    </bean>
+
+    <bean id="robotImpl2" class="com.nadya.impls.RobotImpl" scope="singleton" lazy-init="true" init-method="init">
+        <property name="model" value="T-1000"/>
+        <property name="name" value="Terminator"/>
+        <property name="body" ref="sonyBody"/>
+        <property name="head" ref="toshibaHead" />
+        <property name="rightHand" ref="sonyRightHand"/>
+        <property name="rightLeg" ref="sonyRightLeg"/>
+    </bean>
+
+    <bean id="sonyBody" class="com.nadya.impls.sony.SonyBody"></bean>
+    <bean id="sonyHead" class="com.nadya.impls.sony.SonyHead"></bean>
+    <bean id="sonyRightHand" class="com.nadya.impls.sony.SonyRightHand"></bean>
+    <bean id="sonyRightLeg" class="com.nadya.impls.sony.SonyRightLeg"></bean>
+
+    <bean id="toshibaHead" class="com.nadya.impls.toshiba.ToshibaHead"></bean>
+</beans>
